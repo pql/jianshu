@@ -1,4 +1,13 @@
 {
     "success": true,
-    "data": ["高考","区块链","人工智能"]
+    "data": [
+        "高考",
+        "区块链",
+        "人工智能",
+        "React",
+        "Vue",
+        "Java",
+        "PHP",
+        "Go lang"
+    ]
 }

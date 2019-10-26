@@ -4,7 +4,8 @@ import axios from 'axios';
 
 const changeList = (data) => ({
     type:  Types.CHANGE_LIST,
-    data: fromJS(data)
+    data: fromJS(data),
+    totalPage: Math.ceil(data.length)
 })
 
 export const searchFocus = () => ({
@@ -13,6 +14,19 @@ export const searchFocus = () => ({
 
 export const searchBlur = () => ({
     type: Types.SEARCH_BLUR
+})
+
+export const mouseEnter = () => ({
+    type: Types.MOUSE_ENTER
+})
+
+export const mouseLeave= () => ({
+    type: Types.MOUSE_LEAVE
+})
+
+export const changePage = (page) => ({
+    type: Types.CHANGE_PAGE,
+    page
 })
 
 export const getList = () => {
@@ -25,3 +39,4 @@ export const getList = () => {
         })
     }
 }
+
