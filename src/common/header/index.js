@@ -53,7 +53,7 @@ class Header extends Component {
     }
 
     render() {
-        const { focused, handleInputFocus, handleInputBlur } = this.props
+        const {list, focused, handleInputFocus, handleInputBlur } = this.props
         return (
             <HeaderWrapper>
                 <Logo/>
@@ -70,7 +70,7 @@ class Header extends Component {
                             classNames="slide"
                             in={focused}>
                             <NavSearch 
-                                onFocus={handleInputFocus}
+                                onFocus={() => handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                                 className={focused ? 'focused' : ''}></NavSearch>
                         </CSSTransition>
@@ -102,8 +102,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleInputFocus() {
-            dispatch(actionCreators.getList())
+        handleInputFocus(list) {
+            (list.size === 0) && dispatch(actionCreators.getList())
             dispatch(actionCreators.searchFocus());
         },
         handleInputBlur() {

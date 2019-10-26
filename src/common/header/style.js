@@ -144,6 +144,7 @@ export const SearchInfoSwitch = styled.span`
     font-size: 13px;
     .spin {
         display: block;
+        cursor: pointer;
         float: left;
         font-size: 12px;
         margin-right: 2px;
