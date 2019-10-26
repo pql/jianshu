@@ -1,19 +1,16 @@
 import * as Types from './actionTypes';
+import { fromJS } from 'immutable';
 
-const defaultState = {
+const defaultState = fromJS({
     focused: false
-};
+});
 
 export default (state = defaultState, action) => {
     if (action.type === Types.SEARCH_FOCUS) {
-        return {
-            focused: true
-        }
+        return state.set('focused', true);
     }
     if (action.type === Types.SEARCH_BLUR) {
-        return {
-            focused: false
-        }
+        return state.set('focused', false)
     }
     return state;
 }
