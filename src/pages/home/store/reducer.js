@@ -32,6 +32,16 @@ const defaultState = fromJS({
             desc: '描述',
             imgUrl: '//upload.jianshu.io/admin_banners/web_images/4759/dbf72c4d562f220fe8032de0d9daa3df190f3dc9.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
         }
+    ],
+    recommendList: [
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/admin_banners/web_images/4759/dbf72c4d562f220fe8032de0d9daa3df190f3dc9.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
+        },
+        {
+            id: 2,
+            imgUrl: '//upload.jianshu.io/admin_banners/web_images/4759/dbf72c4d562f220fe8032de0d9daa3df190f3dc9.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
+        }
     ]
 });
 
