@@ -5,6 +5,7 @@ import {
     Header,
     Content
 } from './style';
+import { actionCreators } from './store'
 
 class Detail extends Component {
     render () {
@@ -16,6 +17,9 @@ class Detail extends Component {
             </DetailWrapper>
         )
     }
+    componentDidMount() {
+        this.props.getDetail(this.props.match.params.id);
+    }
 }
 
 const mapStateToProps = (state) => ({
@@ -23,4 +27,10 @@ const mapStateToProps = (state) => ({
     content: state.getIn(['detail', 'content'])
 })
 
-export default connect(mapStateToProps, null)(Detail);
+const mapDispatchToProps = (dispatch) => ({
+    getDetail(id) {
+        dispatch(actionCreators.getDetail(id));
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);
