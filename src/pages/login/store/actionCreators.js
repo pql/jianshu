@@ -15,7 +15,6 @@ export const login = (account, password) => {
             } else {
                 alert('登陆失败')
             }
-            console.log(res)
         })
     }
 }

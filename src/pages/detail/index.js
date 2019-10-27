@@ -6,6 +6,7 @@ import {
     Content
 } from './style';
 import { actionCreators } from './store'
+import { withRouter } from 'react-router-dom'
 
 class Detail extends PureComponent {
 
@@ -35,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Detail);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Detail));
