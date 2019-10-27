@@ -8,6 +8,8 @@ import {
     HomeLeft,
     HomeRight
 } from './style';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Home extends Component {
     render () {
@@ -26,6 +28,27 @@ class Home extends Component {
             </HomeWrapper>
         )
     }
+
+    componentDidMount() {
+        axios.get('/api/home.json').then((res) => {
+            const result = res.data.data
+            const action = {
+                type: 'change_home_data',
+                topicList: result.topicList,
+                articleList: result.articleList,
+                recommendList: result.recommendList
+            }
+            this.props.changeHomeData(action)
+        })
+    }
 }
 
-export default Home;
+
+const mapDispatchToProps = (dispatch) => ({
+    changeHomeData(action) {
+        dispatch(action);
+    }
+})
+
+
+export default connect(null, mapDispatchToProps)(Home);
