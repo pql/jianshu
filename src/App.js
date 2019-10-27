@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './common/header';
 import Home from './pages/home';
 import Detail from './pages/detail';
+import Login from './pages/login';
 import store from './store';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <div>
               <Header />
               <Route exact path="/" component={Home}></Route>
+              <Route exact path="/login" component={Login}></Route>
               <Route exact path="/detail/:id" component={Detail}></Route>
             </div>
           </BrowserRouter>
