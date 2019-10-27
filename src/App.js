@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { GlobalStyle } from './style';
 import { IconfontStyle } from './statics/iconfont/iconfont';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Header from './common/header';
 import Home from './pages/home';
 import Detail from './pages/detail/loadable';
@@ -17,7 +17,7 @@ class App extends Component {
         <div>
           <GlobalStyle />
           <IconfontStyle />
-          <BrowserRouter>
+          <HashRouter>
             <div>
               <Header />
               <Route exact path="/" component={Home}></Route>
@@ -25,7 +25,7 @@ class App extends Component {
               <Route exact path="/write" component={Write}></Route>
               <Route exact path="/detail/:id" component={Detail}></Route>
             </div>
-          </BrowserRouter>
+          </HashRouter>
         </div>
       </Provider>
     )
