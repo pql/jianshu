@@ -6,13 +6,16 @@ import Writer from './components/Writer';
 import { 
     HomeWrapper,
     HomeLeft,
-    HomeRight
+    HomeRight,
+    BackTop
 } from './style';
 import { actionCreators } from './store'
 import { connect } from 'react-redux';
 
 class Home extends Component {
+
     render () {
+        const { showScroll } = this.props
         return (
             <HomeWrapper>
                 <HomeLeft>
@@ -25,12 +28,28 @@ class Home extends Component {
                     <Recommend />
                     <Writer />
                 </HomeRight>
+                {
+                    showScroll ? <BackTop onClick={this.handleScrollTop}>顶部</BackTop> : null
+                }
             </HomeWrapper>
         )
     }
 
     componentDidMount() {
         this.props.changeHomeData();
+        this.bindEvents();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.props.changeScrollTopShow)
+    }
+
+    handleScrollTop() {
+        window.scrollTo(0, 0)
+    }
+
+    bindEvents() {
+        window.addEventListener('scroll', this.props.changeScrollTopShow)
     }
 }
 
@@ -38,8 +57,19 @@ class Home extends Component {
 const mapDispatchToProps = (dispatch) => ({
     changeHomeData() {
         dispatch(actionCreators.getHomeInfo())
+    },
+    changeScrollTopShow() {
+        if(document.documentElement.scrollTop > 100) {
+            dispatch(actionCreators.toggleTopShow(true))
+        } else {
+            dispatch(actionCreators.toggleTopShow(false))
+        }
     }
 })
 
+const mapStateToProps = (state)  => ({
+    showScroll: state.getIn(['home', 'showScroll'])
+})
 
-export default connect(null, mapDispatchToProps)(Home);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
